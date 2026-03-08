@@ -36,6 +36,10 @@ Generated → (review + add comments in Notion) → /run applies edits → (chan
 | `AGENTS.md` | Session-start context for Claude: DB IDs, schema, workflow, important behaviours. |
 | `.claude/commands/` | All pipeline command definitions. |
 
+## New here?
+
+Read [`HOW-TO-USE.md`](HOW-TO-USE.md) — a full setup guide written for non-technical users. Covers everything from creating a GitHub account to running your first pipeline.
+
 ## Customising the writing brief
 
 Edit `instructions.txt` to change tone, post structure, persona targeting, or add new reference posts. Changes take effect on the next run.
