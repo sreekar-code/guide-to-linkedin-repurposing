@@ -18,7 +18,7 @@ See `AGENTS.md` for database IDs and schema details.
 Query the Notion DBs in parallel and collect what's pending:
 
 1. **Posts with unresolved comments** — LinkedIn Posts DB, `Status = Generated`. For each, fetch comments and check for threads with no "Applied." reply. Count only posts that have at least one unresolved thread.
-2. **Posts needing image prompts** — LinkedIn Posts DB, `Status = Generate image prompts`
+2. **Posts approved for image prompts** — LinkedIn Posts DB, `Status = Approved`
 3. **Unprocessed guides** — Guides DB, `Posts Generated = unchecked`
 
 Report the queue to the user:
@@ -27,7 +27,7 @@ Report the queue to the user:
 Queue scan complete
 
 Posts with unresolved comments:  N post(s)
-Image prompts to gen:            N post(s)
+Approved (image prompts to gen): N post(s)
 New guides to process:           N guide(s)
 ```
 
@@ -56,7 +56,7 @@ Edits applied — N post(s) updated
 
 ## Step 3: Generate Image Prompts
 
-If there are posts with `Status = Generate image prompts`, process them now.
+If there are posts with `Status = Approved`, process them now.
 
 Follow the full logic in `.claude/commands/generate-image-prompts.md` exactly:
 - Read `image-guide.md` in full

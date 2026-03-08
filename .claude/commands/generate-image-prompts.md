@@ -1,12 +1,12 @@
 ---
 name: generate-image-prompts
-description: "Generates image prompts for LinkedIn posts marked 'Generate image prompts' in Notion. Reads each post's content, applies the image guide rules, writes a prompt to the Image Prompt column, and sets status to 'Ready to publish'."
+description: "Generates image prompts for LinkedIn posts marked 'Approved' in Notion. Reads each post's content, applies the image guide rules, writes a prompt to the Image Prompt column, and sets status to 'Ready to publish'."
 argument-hint: ""
 ---
 
 # /generate-image-prompts
 
-Generate image prompts for LinkedIn posts that are ready for visuals. Finds all posts with `Status = Generate image prompts`, reads each post's content, generates a tailored image prompt using the image guide, writes it to the `Image Prompt` column, and sets status to `Ready to publish`.
+Generate image prompts for LinkedIn posts you've approved. Finds all posts with `Status = Approved`, reads each post's content, generates a tailored image prompt using the image guide, writes it to the `Image Prompt` column, and sets status to `Ready to publish`.
 
 ## Notion Database IDs
 See `AGENTS.md` for database IDs and schema details.
@@ -17,13 +17,13 @@ See `AGENTS.md` for database IDs and schema details.
 
 ### Step 1: Find Posts Ready for Image Prompts
 
-Query the LinkedIn Posts DB for all pages where `Status = Generate image prompts`.
+Query the LinkedIn Posts DB for all pages where `Status = Approved`.
 
-If none found, tell the user: "No posts currently marked 'Generate image prompts'." and stop.
+If none found, tell the user: "No posts currently marked 'Approved'." and stop.
 
 List the posts found:
 ```
-Found N post(s) marked 'Generate image prompts':
+Found N post(s) marked 'Approved':
 - [Post Title]
 - [Post Title]
 ...
