@@ -2,48 +2,51 @@
 
 ## What this project does
 
-Reads published guides from a Notion database and generates LinkedIn posts from them — one post per sharp idea extracted from each guide.
+Reads published guides from a Notion database and generates LinkedIn posts from them — one post per sharp idea extracted from each guide. Everything runs through Claude Code + Notion MCP.
+
+---
+
+## How to run it
+
+Use the `/run` master command. It scans everything pending and handles it all in one shot:
+- Generated posts with unresolved inline comments → applies edits
+- Posts with Status = Approved → generates image prompts
+- Guides with Posts Generated = unchecked → generates posts
+
+Individual commands for targeted runs:
+- `/generate-posts` — generate posts for unprocessed guides only
+- `/apply-edits` — apply pending inline comment edits only
+- `/generate-image-prompts` — generate image prompts for Approved posts only
+
+All command logic lives in `.claude/commands/`.
+
+---
 
 ## Notion database IDs
 
-| Database | ID |
+| Database | Data Source ID |
 |---|---|
-| Guides | `31736d80-61ff-81ab-8bcc-e059d68d5f97` |
-| LinkedIn Posts | `31736d80-61ff-816c-80f9-f26ae99cff15` |
+| Guides DB | `31736d80-61ff-8105-9cf2-000b86573e98` |
+| LinkedIn Posts DB | `31736d80-61ff-813a-8f48-000bc237c7be` |
 
-## Workflow
-
-When asked to generate posts for unprocessed guides:
-
-1. **Find unprocessed guides** — search the Guides DB for pages where Status = `Published` and Posts Generated = unchecked
-2. **For each guide:**
-   - Fetch the full guide page content
-   - Fetch the last 10 posts with Status = `Finalized` from the LinkedIn Posts DB as style reference (skip gracefully if none exist)
-   - Fetch the last 10 posts with Status = `Published` that have Impressions data as analytics context (skip gracefully if none exist)
-   - Read `instructions.txt` — this is the writing brief and must be followed exactly
-   - Generate posts, one per sharp idea the guide genuinely supports
-   - Show all posts to the user for review before writing anything
-   - On confirmation: create each post in the LinkedIn Posts DB and mark the guide Posts Generated = true
-
-## Writing instructions
-
-Everything about tone, structure, personas, and style lives in `instructions.txt`. Read it fresh every time before generating. Do not summarise or skip sections.
+---
 
 ## Notion schema
 
 ### Guides DB
 | Property | Type | Notes |
 |---|---|---|
-| Title | title | |
-| Status | select | `Draft` or `Published` |
-| Posts Generated | checkbox | Set to true after writing posts |
+| Title | title | Guide name |
+| URL | url | Public spike.sh guide URL — used in P.S. of each post |
+| Posts Generated | checkbox | Set to true after posts are written to Notion |
 
 ### LinkedIn Posts DB
 | Property | Type | Notes |
 |---|---|---|
 | Title | title | Format: `{Guide Title} — Post {N}` |
-| Post Content | rich_text | Full post text including P.S. |
-| Status | select | `Generated`, `Finalized`, or `Published` |
+| Post Content | rich_text | Full post text including P.S. and hashtags |
+| Image Prompt | rich_text | Generated image prompt for the post |
+| Status | select | `Generated`, `Approved`, `Ready to publish`, `Published` |
 | Linked Guide | relation | Relation to the source guide page |
 | Impressions | number | |
 | Engagements | number | |
@@ -54,15 +57,46 @@ Everything about tone, structure, personas, and style lives in `instructions.txt
 | Comments | number | |
 | Reposts | number | |
 | Notes | rich_text | |
-| Screenshot | files | |
+
+---
 
 ## Post status lifecycle
 
-`Generated` → user reviews and edits in Notion → `Finalized` → published on LinkedIn → `Published` → analytics filled in
+`Generated` → user reviews and adds inline comments → `/run` applies edits (status stays Generated) → user changes to `Approved` → `/run` generates image prompt → `Ready to publish` → user publishes on LinkedIn → `Published` → user logs analytics
+
+| Status | Color | Meaning |
+|---|---|---|
+| Generated | Yellow | Post written to Notion, awaiting review |
+| Approved | Purple | User has reviewed and approved — triggers image prompt generation |
+| Ready to publish | Blue | Image prompt generated, ready to go live |
+| Published | Green | Live on LinkedIn |
+
+---
+
+## Edit detection (comment-based)
+
+The pipeline auto-detects unresolved comment threads (threads with no "Applied." reply) on all Generated posts. It applies the requested changes and replies "Applied." to each thread. Status stays Generated throughout — the user manually changes to Approved when satisfied.
+
+---
+
+## Key files
+
+| File | Purpose |
+|---|---|
+| `instructions.txt` | Full writing brief: audience, tone, structure, rules, banned words, reference posts |
+| `opinions.md` | Sharp opinions extracted from processed guides — used when generating new posts |
+| `image-guide.md` | Visual style guide for image prompt generation — color palette, rules, 5 reference examples |
+| `.claude/commands/run.md` | Master pipeline command |
+| `.claude/commands/generate-posts.md` | Full post generation pipeline with 5-persona review board |
+| `.claude/commands/apply-edits.md` | Comment-based edit application |
+| `.claude/commands/generate-image-prompts.md` | Image prompt generation for Approved posts |
+
+---
 
 ## Important behaviours
 
-- Always show generated posts to the user before writing to Notion
-- Never mark a guide as Posts Generated = true unless posts were successfully written
+- Never mark a guide as Posts Generated = true unless posts were successfully written to Notion
 - Skip guides with empty content and move to the next one
-- If Finalized posts or analytics don't exist yet, proceed without them — do not block generation
+- Only act on comment threads with no "Applied." reply — skip already-handled threads
+- Never write posts to Notion until the review gate is passed (or the user explicitly chooses to write as-is)
+- Read `instructions.txt`, `opinions.md`, and `image-guide.md` fresh on every run — never rely on cached memory
