@@ -17,9 +17,11 @@ See `AGENTS.md` for database IDs and schema details.
 
 Query the Notion DBs in parallel and collect what's pending:
 
-1. **Posts with unresolved comments** — LinkedIn Posts DB, `Status = Generated`. For each, fetch comments and check for threads with no "Applied." reply. Count only posts that have at least one unresolved thread.
-2. **Posts approved for image prompts** — LinkedIn Posts DB, `Status = Approved`
-3. **Unprocessed guides** — Guides DB, `Posts Generated = unchecked`
+1. **All posts in the LinkedIn Posts DB** — Search the LinkedIn Posts DB to retrieve every post page. Do not rely on post IDs from session memory. For each post returned, fetch its page to read the `Status` property, then:
+   - `Status = Generated`: fetch its comments and check for threads with no "Applied." reply. If at least one unresolved thread exists, add to the "unresolved comments" list.
+   - `Status = Approved`: add to the "approved for image prompts" list.
+   - Any other status (`Ready to publish`, `Published`, etc.): skip.
+2. **Unprocessed guides** — Guides DB, `Posts Generated = unchecked`
 
 Report the queue to the user:
 
