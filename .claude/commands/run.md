@@ -1,6 +1,6 @@
 ---
 name: run
-description: "Master pipeline command. Scans the full queue — pending edits, image prompts, and unprocessed guides — and handles everything in one run. Processes in order: apply edits → generate image prompts → generate posts for new guides."
+description: "Master pipeline command. Scans the full queue — Generated posts with unresolved comments, image prompts, and unprocessed guides — and handles everything in one run. Processes in order: apply edits → generate image prompts → generate posts for new guides."
 argument-hint: ""
 ---
 
@@ -17,7 +17,7 @@ See `AGENTS.md` for database IDs and schema details.
 
 Query the Notion DBs in parallel and collect what's pending:
 
-1. **Posts needing edits** — LinkedIn Posts DB, `Status = Need edits`
+1. **Posts with unresolved comments** — LinkedIn Posts DB, `Status = Generated`. For each, fetch comments and check for threads with no "Applied." reply. Count only posts that have at least one unresolved thread.
 2. **Posts needing image prompts** — LinkedIn Posts DB, `Status = Generate image prompts`
 3. **Unprocessed guides** — Guides DB, `Posts Generated = unchecked`
 
@@ -26,9 +26,9 @@ Report the queue to the user:
 ```
 Queue scan complete
 
-Pending edits:          N post(s)
-Image prompts to gen:   N post(s)
-New guides to process:  N guide(s)
+Posts with unresolved comments:  N post(s)
+Image prompts to gen:            N post(s)
+New guides to process:           N guide(s)
 ```
 
 If everything is empty, tell the user: "Nothing pending. Queue is clear." and stop.
@@ -37,15 +37,15 @@ If everything is empty, tell the user: "Nothing pending. Queue is clear." and st
 
 ## Step 2: Apply Edits
 
-If there are posts with `Status = Need edits`, process them now.
+If there are `Generated` posts with unresolved comment threads, process them now.
 
 Follow the full logic in `.claude/commands/apply-edits.md` exactly:
-- Fetch each post's page and read all inline comments
-- Apply every requested change to the post content
+- For each post, read all comment threads — skip any with an "Applied." reply
+- Apply every unresolved comment's requested change to the post content
 - Verify the edited post still complies with `instructions.txt` rules
 - Update `Post Content` in Notion
-- Reply "Applied." to each comment thread
-- Set status to `Generated`
+- Reply "Applied." to each unresolved comment thread
+- Status stays `Generated` — do not change it
 
 When done, report:
 ```

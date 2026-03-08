@@ -1,12 +1,12 @@
 ---
 name: apply-edits
-description: "Applies user edits to LinkedIn posts marked 'Need edits' in Notion. Reads inline comments on each post page, applies the requested changes, replies 'Applied' to each comment, and sets status back to 'Generated'."
+description: "Applies user edits to LinkedIn posts. Scans all Generated posts for unresolved inline comments (threads with no 'Applied.' reply), applies the requested changes, and replies 'Applied.' to each thread. Status stays Generated throughout."
 argument-hint: ""
 ---
 
 # /apply-edits
 
-Apply pending edits to LinkedIn posts in Notion. Finds all posts with `Status = Need edits`, reads the inline comments you left, applies the changes, and marks them back as `Generated`.
+Apply pending edits to LinkedIn posts. Scans all `Generated` posts for unresolved comment threads, applies the changes, and replies "Applied." to each thread. No status change needed from you.
 
 ## Notion Database IDs
 See `AGENTS.md` for database IDs and schema details.
@@ -15,32 +15,35 @@ See `AGENTS.md` for database IDs and schema details.
 
 ## Workflow
 
-### Step 1: Find Posts Needing Edits
+### Step 1: Find Posts With Unresolved Comments
 
-Query the LinkedIn Posts DB for all pages where `Status = Need edits`.
+1. Query the LinkedIn Posts DB for all pages where `Status = Generated`
+2. For each post, fetch comments using `get_comments` with `include_all_blocks: true`
+3. A post has **unresolved comments** if it has at least one comment thread where none of the replies contain "Applied."
+4. Collect only posts with unresolved comments
 
-If none found, tell the user: "No posts currently marked 'Need edits'." and stop.
+If none found, tell the user: "No Generated posts have unresolved comments." and stop.
 
 List the posts found:
 ```
-Found N post(s) marked 'Need edits':
-- [Post Title]
-- [Post Title]
+Found N post(s) with unresolved comments:
+- [Post Title] (N unresolved thread(s))
+- [Post Title] (N unresolved thread(s))
 ...
 ```
 
 ---
 
-### Step 2: For Each Post — Read Comments and Apply Edits
+### Step 2: For Each Post — Apply Edits
 
-For each post:
+For each post with unresolved comments:
 
 1. Fetch the full post page content from Notion (to get the current Post Content)
-2. Fetch all comments on the page using `get_comments` with `include_all_blocks: true` — this captures both page-level and inline comments
-3. Read through all comments carefully. Each comment is an edit instruction from the user.
+2. Read through all unresolved comment threads — these are the edit instructions
+3. Skip any thread that already has an "Applied." reply (already handled in a previous run)
 
 **Applying edits:**
-- Treat each comment as a specific instruction to change something in the post
+- Treat each unresolved comment as a specific instruction to change something in the post
 - Apply every comment's requested change to the post content
 - If a comment is ambiguous, use judgment to make the most reasonable interpretation — do not ask for clarification mid-run
 - Preserve everything not mentioned in the comments (structure, tone, word count, all rules from `instructions.txt`)
@@ -49,13 +52,14 @@ For each post:
   - No banned words (ensure, enhance, leverage, utilize, "for example", "imagine", "tends", draining, relentless)
   - No more than one comma per sentence
   - 100-150 words in body (excluding P.S.)
-  - No hashtags, no bold inside the post body
+  - No bold inside the post body
+  - 3-5 relevant hashtags at end (after P.S.)
   - No instructional language
   - UK-style hedging language present
 
 4. Update the post's `Post Content` field in Notion with the revised text
-5. Reply to each comment thread with: `Applied.`
-6. Set the post's `Status` to `Generated`
+5. Reply to each unresolved comment thread with: `Applied.`
+6. Status remains `Generated` — do not change it
 
 ---
 
@@ -68,11 +72,9 @@ Edits applied — N post(s) updated
 
 [Post Title]
   Comments addressed: N
-  Status: → Generated
 
 [Post Title]
   Comments addressed: N
-  Status: → Generated
 
 Note: Comments remain open in Notion — resolve them manually once you've reviewed the changes.
 ```
@@ -81,8 +83,9 @@ Note: Comments remain open in Notion — resolve them manually once you've revie
 
 ## Important Rules
 
+- Only act on threads with no "Applied." reply — skip already-handled threads
 - Never change content that wasn't mentioned in a comment
 - Apply edits faithfully — do not rewrite the post beyond what the comment requests
 - If an edit would violate `instructions.txt` rules, fix the violation while honoring the spirit of the edit
-- Never set status to `Published` — only back to `Generated`
+- Do not change the post's status — it stays `Generated`
 - Process posts one at a time, sequentially
