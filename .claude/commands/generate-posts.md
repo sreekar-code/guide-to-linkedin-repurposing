@@ -35,6 +35,7 @@ For each guide:
 2. Fetch the last 10 **Finalized** posts from the LinkedIn Posts DB as style reference (skip if none)
 3. Fetch the last 10 **Published** posts with Impressions data as analytics context (skip if none)
 4. Read `instructions.txt` — the full writing brief. Follow it exactly.
+5. Read `opinions.md` if it exists — a growing list of opinions extracted from previously processed guides. These supplement the brand anchors in `instructions.txt`. Note which opinions are most relevant to this guide's topic; use them when writing posts.
 
 If the guide body is empty, skip it and move to the next one.
 
@@ -42,7 +43,7 @@ If the guide body is empty, skip it and move to the next one.
 
 ### Step 3: Generate Draft Posts
 
-Using the guide content, style references, analytics context, and `instructions.txt`:
+Using the guide content, style references, analytics context, `instructions.txt`, and the relevant opinions from `opinions.md`:
 
 - Extract every sharp, distinct idea the guide genuinely supports
 - Write one LinkedIn post per idea
@@ -141,7 +142,11 @@ Result: PASS / FAIL
    - Status: `Generated`
    - Linked Guide: relation to the source guide page
 2. Mark the guide `Posts Generated = true` in Notion
-3. Tell the user:
+3. Extract 2-4 sharp opinions from this guide and append them to `opinions.md`:
+   - Each opinion is one plain sentence stating a belief the guide supports — not a summary, but a point of view
+   - Add a heading with the guide title, then list the opinions as bullets
+   - Do not duplicate opinions already in the file
+4. Tell the user:
 
 ```
 Pipeline complete — [Guide Title]
