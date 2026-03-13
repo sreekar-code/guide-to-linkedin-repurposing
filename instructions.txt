@@ -152,7 +152,9 @@ But if every post-incident review at your team starts with "who touched this las
 
 Context, not calendar. That's what fast incident response actually runs on.
 
-P.S. We wrote a guide covering various such on-call models. [guide URL]
+P.S. We wrote a guide covering various such on-call models. Check it out: https://lnkd.in/gPvV6YXn
+
+#oncallmodels #oncall #oncallresponder #incidents
 
 ---
 
@@ -172,11 +174,31 @@ A two-day rotation keeps the window small. The person on-call stays sharp. The p
 
 Pick a rotation that matches your incident volume. You can always adjust later.
 
-P.S. We wrote a guide on how to choose the right on-call rotation. [guide URL]
+P.S. We wrote a guide on how to choose the right on-call rotation. Read it here: https://lnkd.in/gKgNJpEr
+
+#incidentvolume #oncallrotation #oncall #weeklyrotation #oncallmanagement
 
 ---
 
 Reference Post 4
+
+The first escalation policy you set up probably won't be your last. And that's exactly how it should be.
+
+Most teams get stuck trying to predict the perfect escalation structure upfront. Which incidents need phone calls? Who should be in L2? How many policies do we actually need? The questions feel important enough to spend weeks debating.
+
+But escalation policies aren't architecture decisions. They're living documents that get better as you learn your actual incident patterns. A team that handles three incidents a month will discover different needs than a team handling three incidents a day.
+
+The goal isn't to create the perfect policy. It's to set up something workable and then refine it as you go.
+
+Start with something simple that covers your most obvious cases, then iterate when reality shows you what you missed.
+
+P.S. We wrote a guide on five escalation policy approaches, with practical examples of when each one works best. Read it here: https://lnkd.in/genWNprm
+
+#escalationpolicy #escalation #incidentescalation #alerts
+
+---
+
+Reference Post 5
 
 Your team probably doesn't need on-call coverage seven days a week.
 
@@ -188,4 +210,22 @@ You do need a plan for incidents that come in that day. Some teams pick their hi
 
 Constant availability isn't the same as better coverage.
 
-P.S. We wrote a guide on 5 offbeat on-call rotations that work. [guide URL]
+P.S. We wrote a guide on 5 offbeat on-call rotations that work. Check it out: https://lnkd.in/gb-iB367
+
+#oncallcoverage #oncall #oncallrotation #oncallmanagement
+
+---
+
+Reference Post 6
+
+The Fibonacci sequence makes for a surprisingly useful on-call experiment.
+
+Instead of fixed weekly rotations, shifts follow the pattern: 1 day, 2 days, 3 days, 5 days, 8 days, then repeat. Everyone experiences multiple shift lengths in a single cycle.
+
+This works well when you're not sure what rotation length fits your team. After a few cycles, you can ask people how the 3-day shift felt compared to the 5-day one. Most teams discover they have a strong preference for a particular length, then switch to that fixed pattern.
+
+Sometimes the best way to find your ideal rotation is to try several at once.
+
+P.S. We wrote a guide on five offbeat on-call rotations, including this Fibonacci approach. Check it out: https://lnkd.in/gb-iB367
+
+#fibonacci #oncallrotation #oncall #oncallmanagement

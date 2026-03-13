@@ -40,6 +40,7 @@ For each guide:
 3. Fetch the last 10 **Published** posts from the LinkedIn Posts DB — use as style reference. Skip if none.
 4. Read `instructions.txt` — the full writing brief. Follow it exactly.
 5. Read `opinions.md` — a growing list of opinions extracted from previously processed guides. Note which opinions are most relevant to this guide's topic; use them when writing posts.
+6. Read `edit-log.md` — patterns extracted from past user edits. Apply every pattern in this file to every post generated. These represent real corrections and take precedence when they conflict with a first instinct.
 
 If the guide body is empty, skip it and move to the next one.
 

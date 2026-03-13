@@ -65,7 +65,20 @@ For each post with unresolved comments:
 
 ---
 
-### Step 3: Report to User
+### Step 3: Extract Patterns to edit-log.md
+
+After applying all edits, review every comment that was addressed in this run and extract generalizable writing patterns from them.
+
+For each pattern:
+- State it as a rule that applies to future posts, not as a description of what was fixed
+- Check `edit-log.md` first — if the same underlying pattern is already captured, skip it or update the existing entry rather than adding a duplicate
+- Add new patterns under the `## Writing patterns` section
+
+If no new patterns are extractable (all comments were content-specific with no generalizable lesson), skip this step silently.
+
+---
+
+### Step 4: Report to User
 
 After processing all posts:
 
