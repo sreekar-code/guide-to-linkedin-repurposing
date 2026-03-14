@@ -73,12 +73,13 @@ TONE AND WRITING STYLE
 - Plain language. Short sentences mixed with longer ones. Avoid standalone sentences of 3 words or fewer — fragments read as choppy and unfinished
 - Avoid sounding like content marketing. The post should feel educational first
 - Use "incident" not "alert"
+- Use "incident triggers" not "incident happens" or "incident occurs"
 - Avoid the words: ensure, enhance, leverage, utilize, and all their variations
 - No em dashes
 - Prefer no more than one comma per sentence — occasional exceptions are fine but keep sentences clean
 - Avoid excessive -ing words
 - Avoid instructional language. Not "Start with a 2-day rotation" but "A 2-day rotation is a good place to start"
-- Use UK-style softer tone with hedging language like: probably, usually, often helps, consider, most teams prefer, many teams prefer, you'll find suggestions on, it can be helpful, good luck, go ahead and try it out, usually works best, it can be useful to. At least one hedging phrase per post is sufficient.
+- Use UK-style softer tone with hedging language like: probably, usually, often helps, consider, you'll find suggestions on, it can be helpful, good luck, go ahead and try it out, usually works best, it can be useful to. At least one hedging phrase per post is sufficient.
 
 ---
 
@@ -103,6 +104,7 @@ WORDS AND PHRASES TO AVOID
 - "Imagine"
 - "Tends"
 - Negative words like draining, relentless — use subtler alternatives like overwhelming instead
+- "Most teams", "many teams", "some teams"
 - Em dashes
 
 ---
