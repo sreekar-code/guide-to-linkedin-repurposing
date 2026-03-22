@@ -47,17 +47,7 @@ For each post with unresolved comments:
 - Apply every comment's requested change to the post content
 - If a comment is ambiguous, use judgment to make the most reasonable interpretation — do not ask for clarification mid-run
 - Preserve everything not mentioned in the comments (structure, tone, word count, all rules from `instructions.txt`)
-- After applying edits, read `instructions.txt` fresh and verify the post complies with all its rules. Key checks:
-  - No em dashes
-  - No banned words (ensure, enhance, leverage, utilize, "for example", "imagine", "tends", draining, relentless)
-  - No more than one comma per sentence
-  - 90-160 words in body (excluding P.S.)
-  - No bold inside the post body
-  - 3-5 relevant hashtags at end (after P.S.)
-  - No instructional language
-  - UK-style hedging language present (at least one phrase per post is sufficient)
-  - No excessive -ing words
-  - "incident" not "alert" — never use "alert" to describe an incident
+- After applying edits, read `instructions.txt` fresh and verify the post complies with all its rules — word count, tone, banned words, format, hashtags, and everything else specified there. Do not hardcode checks here; `instructions.txt` is the single source of truth
 
 4. Update the post's `Post Content` field in Notion with the revised text
 5. Reply to each unresolved comment thread with: `Applied.`

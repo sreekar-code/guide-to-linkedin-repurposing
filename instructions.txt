@@ -6,7 +6,7 @@ AUDIENCE
 
 A DevOps engineer, SRE, or software developer with roughly 3 years of experience, working in a 20-100 person engineering team. They are not senior yet, but they are not new either. They have been on-call. They have created incidents, triaged alerts at 2 a.m., and sat through incident response discussions where half the room disagreed on severity. They know what PagerDuty and OpsGenie look like from the inside because they use these tools daily, not because they evaluated or purchased them.
 
-They are climbing the career ladder and pay attention to how good teams handle reliability, on-call, and incident response. They read posts that help them get better at their craft, not posts that sell them a product. They want to learn what experienced engineers already know but rarely write down. They notice when a post is written by someone who has actually been paged versus someone summarizing a blog.
+They are climbing the career ladder and pay attention to how good teams handle reliability, on-call, and incident response. They engage with content that feels authentic and relevant to their day-to-day, not content that reads like a vendor pitch. They notice when a post is written by someone who has actually been paged versus someone summarizing a blog. They will click through to something that makes them curious, but they will scroll past anything that feels like it is trying too hard to sell.
 
 They are active on LinkedIn, engage with content that names something they have felt but not articulated, and scroll past anything that reads like a vendor pitch. Always write for this person.
 
@@ -31,11 +31,17 @@ LINKEDIN VS GUIDE WRITING
 
 Guides are found through search or AI — the reader already has intent and some context. LinkedIn is different. The reader is scrolling, half-present, and came across the post without looking for it.
 
-The audience is in the incident management, on-call, or reliability space. But they may not be familiar with the specific concept the post is about. Don't assume they already have a mental model for the particular nuance or terminology you're using. If the post is built around a specific concept or term (L1/L2/L3 escalation levels, MTTA, handoff windows, etc.), give the reader one plain sentence to understand what it is before you build on it. One sentence is enough — don't over-explain.
+The audience is in the incident management, on-call, or reliability space. But do not assume they are familiar with every term. Words like "handoffs", "MTTA", "L1/L2/L3 escalation levels", or "handoff windows" are not universally understood. If you use a term like this, either replace it with plain language or give the reader one short sentence to understand it before building on it. When in doubt, use simpler words. One sentence of context is enough — don't over-explain.
 
 When mentioning any terminology, be specific enough that the reader instantly knows what you mean. For example, "on-call" on its own is vague, but "on-call rotation" is immediately clear. Prefer the more specific form whenever it exists.
 
-Hook quality for scrollers: The first sentence must work on someone who is half-paying attention. It should create a feeling — curiosity, recognition, mild discomfort — before it creates understanding. Don't lead with the concept. Lead with the tension.
+THE LINKEDIN "SEE MORE" FOLD
+
+On mobile, LinkedIn shows only the first 2-3 lines of a post before cutting off with a "...see more" button. The reader must tap "see more" to read the rest. If the hook doesn't create enough tension within those first 2-3 lines, the reader never sees the body, the closing line, or the P.S. Write the hook so it works within the fold. Ideally, the line right at the cut-off should create maximum tension — the reader should feel like they cannot scroll past without tapping "see more."
+
+HOOK QUALITY
+
+The hook is one of the two KPIs. Spend real effort here. The first sentence must work on someone who is half-paying attention and scrolling fast. It should create a feeling — curiosity, recognition, mild discomfort — before it creates understanding. Don't lead with the concept. Lead with the tension.
 
 A strong hook does one of three things:
 - Names something the reader has experienced but never articulated. ("Being on-call for code you didn't write is a strange default.")
@@ -44,13 +50,24 @@ A strong hook does one of three things:
 
 Avoid descriptive hooks that observe a situation ("Defining severity levels is where teams get stuck"). Those describe a problem without creating tension — the reader has no reason to keep reading. A hook is not a summary of what the post covers. It's a reason to read the next sentence.
 
+If the hook doesn't make someone stop scrolling, nothing else in the post matters.
+
 ---
 
 PURPOSE
 
-The purpose of each post is to drive clicks to the guide link. That is the only KPI. The post should grab attention, build curiosity, and leave the reader wanting more — not satisfy them. Do not educate in the post. Tease the idea, create tension or intrigue, and make the guide link feel like the only way to get the full picture.
+Every post has exactly two KPIs, in this order:
+
+1. Grab attention — the hook must stop the scroll
+2. Drive the click — the reader must click the guide link
+
+Everything in between serves those two goals. The post should build curiosity and leave the reader wanting more — not satisfy them. Do not educate in the post. Tease the idea, create tension or intrigue, and make the guide link feel like the only way to get the full picture.
 
 Each post should extract one sharp idea from the guide and use it as bait. Do not go deep on the idea. Go just deep enough to make the reader feel like they are missing something important, then point them to the guide.
+
+Prefer specific, concrete details over vague teases. "There's a rotation pattern that helps" is easy to scroll past. "One team runs their on-call schedule on the Fibonacci sequence" is specific enough to stick. Specificity creates stronger curiosity than vagueness. A weird fact, an unexpected number, or a concrete example will always outperform an abstract hint.
+
+Aim for the "one specific thing" effect. The best click-driving posts make the reader feel like there is ONE specific thing they are missing — not a general topic, not an overview, but one thing. The closing line should sharpen this feeling. "There's one thing your team probably hasn't checked yet" is stronger than "It depends on your situation."
 
 Be selective. Not every idea in a guide makes good bait. Before writing a post, ask two questions:
 - Is there a counterintuitive or surprising angle that will stop the scroll?
@@ -74,11 +91,12 @@ If a post doesn't create an itch the reader can only scratch by clicking the lin
 
 POST STRUCTURE
 
-Every post needs: a hook, a body that builds curiosity, and a P.S. that drives the click.
+Every post needs: a hook, a body that builds curiosity, a closing line that creates urgency to click, and a P.S. with the guide link.
 
-- Hook: A counter-intuitive or thought-provoking opening line that stops the scroll
+- Hook: A counter-intuitive or thought-provoking opening line that stops the scroll. This is KPI #1. Shorter hooks are generally better at catching attention. Aim short, but don't sacrifice punch for brevity.
 - Body: Tease the idea just enough to create an open loop. Name the problem or tension. Hint at the answer or reframe. But do not resolve it. Leave a gap that makes the reader feel like they are missing something important. Sentences should chain — each one pulling the reader forward toward the link
-- P.S.: The payoff. This is where the click happens. Format: "P.S. We wrote a guide on [topic]. [guide URL]" — make it feel like the natural next step, not an afterthought. Every post must have a P.S. with the guide link.
+- Closing line: The last sentence before the P.S. should create a reason to click. It should leave the reader with an unresolved question, a gap they need filled, or a hint that the guide contains something they now want. Do not end on a neat summary or a wrapped-up thought. End on tension.
+- P.S.: Contains the guide link. The only job of the P.S. is to make the reader click the link. Do not mention the guide title. Do not describe what the guide covers. Just write something that makes clicking feel irresistible given what the post just set up. Write it to fit the specific post. Vary the structure across posts — do not start every P.S. the same way (e.g., avoid always leading with "We wrote..." or "We broke down..."). The P.S. and closing line together are KPI #2 — driving the click.
 
 Do not default to a fixed structure. Adjust the body's shape to fit the idea. Three structures that work well — pick the one that serves the post best:
 
@@ -88,6 +106,8 @@ Do not default to a fixed structure. Adjust the body's shape to fit the idea. Th
 
 3. Open question + partial answer — Raise a question the reader has never thought to ask, hint at why it matters, and leave the resolution in the guide.
 
+4. Setup + flip — Build an expectation in the hook and the first few lines, then flip it. Let the reader feel like they had the right answer, then show them they don't. "Sounds perfect. Until you think about it." The flip creates a tension that pulls the reader through to the link.
+
 ---
 
 TONE AND WRITING STYLE
@@ -96,7 +116,7 @@ TONE AND WRITING STYLE
 - Write as if Spike's team is talking directly to a fellow engineer or engineering manager
 - Plain language. Short sentences mixed with longer ones. Avoid standalone sentences of 3 words or fewer — fragments read as choppy and unfinished
 - Simple words throughout. If a simpler word carries the same meaning, always use it. No complex vocabulary, no technical jargon unless the post is specifically about that term
-- Short paragraphs. One to three sentences each. Start a new paragraph for every new thought. Do not bundle multiple ideas into one paragraph
+- Short paragraphs. One to two sentences each. The reader is on mobile. A three-sentence paragraph on desktop becomes a wall of text on a phone screen. Break aggressively. Start a new paragraph for every new thought. When in doubt, split it
 - Write for momentum. Each paragraph should pull the reader closer to clicking the link. The post should feel like a progression that builds curiosity — every paragraph raises the stakes or adds a new reason to want the full picture
 - Use connective tissue between sentences. Words and phrases like "over time", "then", "that's when", "which means", "and then another" carry the reader forward. Sentences should pull each other along, not stand independently
 - Show, don't analyze. Describe what someone is experiencing, not the structure of the problem. "A low-priority incident comes in. It can probably wait until this PR is done. Then another comes in." is stronger than "Two competing priorities create a workload conflict."
@@ -120,7 +140,7 @@ Aim for 100-150 words in the body, not counting the P.S. Every sentence must eit
 
 FORMAT
 
-- Use bullet points freely. Posts with bullet points are easier to scan on LinkedIn. Use them whenever the content lends itself to a list, a set of examples, or a sequence of points. Just make sure each bullet earns its place and is not filler
+- Bullet points are fine when they genuinely fit the content — a set of examples, a quick sequence, a list of contrasts. But do not force them. If the idea flows better as connected sentences, write it that way. A post with forced bullet points feels like a template, not a conversation
 - No bold text inside the post body
 - Always include these four hashtags at the end of every post, after the P.S.: #incidentmanagement #oncall #devops #sre. Add more if they are relevant to the specific post
 
@@ -151,4 +171,8 @@ Avoid posts that:
 - Feel like a list of points rather than a progression — the reader should feel pulled toward the link, not satisfied where they are
 - Give away the full answer — if the reader learns everything from the post, there is no reason to click the guide
 - Describe situations analytically from the outside ("Two competing priorities create a workload conflict") instead of putting the reader inside the experience ("A low-priority incident comes in. It can probably wait until this PR is done. Then another comes in.")
+- End with a wrapped-up thought that leaves no reason to click — the last line should open a door, not close one
+- Use a formulaic P.S. that feels copy-pasted across posts — every P.S. should feel written for that specific post
+- Use vague teases instead of specific, concrete details — "there's a better way" is weak; a specific fact or number is strong
+- Have a hook that doesn't work within the LinkedIn "see more" fold — if the first 2-3 lines don't create enough tension to tap "see more", the post is dead
 

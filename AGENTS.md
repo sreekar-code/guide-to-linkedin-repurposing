@@ -2,7 +2,7 @@
 
 ## What this project does
 
-Reads published guides from a Notion database and generates LinkedIn posts from them — one post per sharp idea extracted from each guide. Everything runs through Claude Code + Notion MCP.
+Reads published guides from a Notion database and generates click-driven LinkedIn posts from them. Each post teases one idea from the guide to build curiosity and drive clicks to the full guide link. Everything runs through Claude Code + Notion MCP.
 
 ---
 

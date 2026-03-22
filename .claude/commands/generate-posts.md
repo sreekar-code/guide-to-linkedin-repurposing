@@ -6,7 +6,7 @@ argument-hint: "[guide-title or leave blank for auto-detect]"
 
 # /generate-posts
 
-Run the full LinkedIn post generation pipeline for Spike.sh. Fetches unprocessed guides from Notion, generates posts, and writes them directly to Notion.
+Run the full LinkedIn post generation pipeline for Spike.sh. Fetches unprocessed guides from Notion, generates click-driven posts designed to lure readers into clicking the guide link, and writes them directly to Notion. The posts do not need to educate — the guide does that. Each post's job is to grab attention, build curiosity, and drive the click.
 
 ## Notion Database IDs
 See `AGENTS.md` for database IDs and schema details.
@@ -50,9 +50,9 @@ If the guide body is empty, skip it and move to the next one.
 
 Using the guide content, style references, `instructions.txt`, and relevant opinions from `opinions.md`:
 
-- Extract every sharp, distinct idea the guide genuinely supports
-- Write one LinkedIn post per idea
-- Stop when there are no more ideas worth a standalone post
+- Extract every idea from the guide that can be turned into compelling bait — something surprising, counterintuitive, or tension-creating
+- Write one LinkedIn post per idea. Each post should tease the idea, build curiosity, and leave the reader wanting the full answer from the guide
+- Stop when there are no more ideas that would make a reader want to click
 - Follow all rules in `instructions.txt` strictly
 
 Label each post: `Post 1`, `Post 2`, etc.
