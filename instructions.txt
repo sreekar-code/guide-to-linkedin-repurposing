@@ -37,11 +37,17 @@ When mentioning any terminology, be specific enough that the reader instantly kn
 
 THE LINKEDIN "SEE MORE" FOLD
 
-On mobile, LinkedIn shows only the first 2-3 lines of a post before cutting off with a "...see more" button. The reader must tap "see more" to read the rest. If the hook doesn't create enough tension within those first 2-3 lines, the reader never sees the body, the closing line, or the P.S. Write the hook so it works within the fold. Ideally, the line right at the cut-off should create maximum tension — the reader should feel like they cannot scroll past without tapping "see more."
+On mobile, LinkedIn shows only the first 2-3 lines of a post before cutting off with a "...see more" button. Think of the before-fold content as two jobs working together:
+
+1. The hook (first sentence) — must be CATCHY. Its only job is to stop the scroll. It should hit the reader emotionally before they even understand what the post is about. A catchy hook creates a feeling — surprise, disbelief, discomfort, recognition — not understanding. "The Fibonacci sequence has no business being in an on-call schedule" is catchy. "One on-call rotation uses the Fibonacci sequence to set shift lengths" is informational. The first one stops the scroll. The second one doesn't.
+
+2. The lines after the hook (still before the fold) — build curiosity. Add specifics, deepen the tension, make the reader feel like they MUST tap "see more." The line right at the cut-off should create maximum tension.
+
+The hook is catchy. The before-fold content is curious. Together they get the tap.
 
 HOOK QUALITY
 
-The hook is one of the two KPIs. Spend real effort here. The first sentence must work on someone who is half-paying attention and scrolling fast. It should create a feeling — curiosity, recognition, mild discomfort — before it creates understanding. Don't lead with the concept. Lead with the tension.
+The hook is one of the two KPIs. No compromise on this. The first sentence must be catchy above all else. It must work on someone who is half-paying attention and scrolling fast. It should create a feeling — curiosity, recognition, mild discomfort — before it creates understanding. Don't lead with the concept. Lead with the tension.
 
 A strong hook does one of three things:
 - Names something the reader has experienced but never articulated. ("Being on-call for code you didn't write is a strange default.")
@@ -69,6 +75,18 @@ Prefer specific, concrete details over vague teases. "There's a rotation pattern
 
 Aim for the "one specific thing" effect. The best click-driving posts make the reader feel like there is ONE specific thing they are missing — not a general topic, not an overview, but one thing. The closing line should sharpen this feeling. "There's one thing your team probably hasn't checked yet" is stronger than "It depends on your situation."
 
+VARY THE CLICK MECHANISM
+
+Do not use the same reason to click across every post. "There's a hidden catch, click to find out" works once but becomes a pattern the reader sees through. And if every post hints at a problem, the ideas start to feel like traps instead of genuinely useful options.
+
+Different posts should use different click drivers:
+- Curiosity about mechanics — the reader wants to understand how it actually works in practice
+- Desire to try it — the post makes the idea sound so appealing that clicking feels like the obvious next step
+- Disagreement — the reader thinks "that can't work" and clicks to prove you wrong
+- Recognition — the reader has the exact problem the post describes and clicks because the guide promises a solution
+
+Match the click mechanism to the idea's natural strength. If a rotation is genuinely appealing, lean into that appeal and let the reader click because they want to try it. If a rotation is counterintuitive, lean into the disbelief. Do not default to "there's a hidden problem" for everything.
+
 Be selective. Not every idea in a guide makes good bait. Before writing a post, ask two questions:
 - Is there a counterintuitive or surprising angle that will stop the scroll?
 - Will the reader feel compelled to click the link to get the full answer?
@@ -93,7 +111,7 @@ POST STRUCTURE
 
 Every post needs: a hook, a body that builds curiosity, a closing line that creates urgency to click, and a P.S. with the guide link.
 
-- Hook: A counter-intuitive or thought-provoking opening line that stops the scroll. This is KPI #1. Shorter hooks are generally better at catching attention. Aim short, but don't sacrifice punch for brevity.
+- Hook: The first sentence must be CATCHY. Not informational, not descriptive — catchy. It should make someone feel something before they understand anything. Shorter hooks are generally better. But catchiness is non-negotiable regardless of length. This is KPI #1.
 - Body: Tease the idea just enough to create an open loop. Name the problem or tension. Hint at the answer or reframe. But do not resolve it. Leave a gap that makes the reader feel like they are missing something important. Sentences should chain — each one pulling the reader forward toward the link
 - Closing line: The last sentence before the P.S. should create a reason to click. It should leave the reader with an unresolved question, a gap they need filled, or a hint that the guide contains something they now want. Do not end on a neat summary or a wrapped-up thought. End on tension.
 - P.S.: Contains the guide link. The only job of the P.S. is to make the reader click the link. Do not mention the guide title. Do not describe what the guide covers. Just write something that makes clicking feel irresistible given what the post just set up. Write it to fit the specific post. Vary the structure across posts — do not start every P.S. the same way (e.g., avoid always leading with "We wrote..." or "We broke down..."). The P.S. and closing line together are KPI #2 — driving the click.
