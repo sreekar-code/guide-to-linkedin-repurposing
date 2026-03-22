@@ -30,7 +30,7 @@ Generated → (review + add comments in Notion) → /run applies edits → (chan
 
 | File | Purpose |
 |---|---|
-| `instructions.txt` | Writing brief: tone, structure, rules, banned words, reference posts. Edit this to change how posts are written. |
+| `instructions.txt` | Writing brief: tone, structure, rules, banned words. Edit this to change how posts are written. |
 | `opinions.md` | Growing list of sharp opinions extracted from processed guides. Feeds into future post generation. |
 | `image-guide.md` | Visual style guide for image prompts: color palette, rules, 5 reference examples, prompt template. |
 | `AGENTS.md` | Session-start context for Claude: DB IDs, schema, workflow, important behaviours. |
@@ -42,4 +42,4 @@ Read [`HOW-TO-USE.md`](HOW-TO-USE.md) — a full setup guide written for non-tec
 
 ## Customising the writing brief
 
-Edit `instructions.txt` to change tone, post structure, persona targeting, or add new reference posts. Changes take effect on the next run.
+Edit `instructions.txt` to change tone, post structure, or persona targeting. Changes take effect on the next run.

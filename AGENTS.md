@@ -83,7 +83,7 @@ The pipeline auto-detects unresolved comment threads (threads with no "Applied."
 
 | File | Purpose |
 |---|---|
-| `instructions.txt` | Full writing brief: audience, tone, structure, rules, banned words, reference posts |
+| `instructions.txt` | Full writing brief: audience, tone, structure, rules, banned words |
 | `opinions.md` | Sharp opinions extracted from processed guides — used when generating new posts |
 | `edit-log.md` | Writing patterns extracted from past user edits — read during post generation, updated after each apply-edits run |
 | `image-guide.md` | Visual style guide for image prompt generation — color palette, rules, 5 reference examples |

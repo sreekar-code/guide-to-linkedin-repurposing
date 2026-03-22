@@ -226,8 +226,6 @@ Open `instructions.txt` in a text editor. You will see sections for:
 - **TONE AND WRITING STYLE** — how you want to sound
 - **LENGTH** — word count targets
 - **WORDS AND PHRASES TO AVOID** — your banned words
-- **REFERENCE POSTS** — examples of posts you love
-
 Rewrite each section to reflect your brand. Key things to change:
 
 **AUDIENCE**: Replace the Spike personas with your own. Describe your reader in specific terms — their job title, company size, tools they use, what they care about, what frustrates them. Be specific. "Marketing managers at B2B SaaS companies with 50-200 employees" is more useful than "marketers".
@@ -237,8 +235,6 @@ Rewrite each section to reflect your brand. Key things to change:
 **TONE AND WRITING STYLE**: Describe how you want to sound. Warm? Direct? Technical? Conversational? Add any specific rules that matter to you.
 
 **WORDS AND PHRASES TO AVOID**: List clichés and words that do not fit your brand.
-
-**REFERENCE POSTS**: Replace the example posts with 3-4 of your own LinkedIn posts that you are proud of. These are the style benchmark the pipeline will write toward.
 
 ### Step 15: Update the P.S. format (if needed)
 
@@ -377,7 +373,7 @@ Yes. Edit `instructions.txt` any time. Changes take effect on the next run. Prev
 Delete the existing posts from the LinkedIn Posts database in Notion, uncheck the `Posts Generated` checkbox on that content row, and run `/run` again.
 
 **The posts do not sound like my brand yet. What should I do?**
-Improve your `instructions.txt`. The two highest-impact things: (1) make your AUDIENCE description more specific, and (2) add more REFERENCE POSTS — real examples of content you love. The pipeline calibrates its style against those examples.
+Improve your `instructions.txt`. The highest-impact thing: make your AUDIENCE description more specific. The more concrete the persona, the better the posts will sound.
 
 **Do I need to use Notion? Can I use another tool?**
 The pipeline is built specifically for Notion via the Notion MCP. Using a different tool would require modifying the pipeline commands in `.claude/commands/`, which needs some technical knowledge.
