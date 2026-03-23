@@ -1,8 +1,8 @@
 # How to Use This Project
 
-This project turns your long-form content into LinkedIn posts — automatically. You feed it articles, guides, blog posts, or newsletters. It reads them, extracts the sharpest ideas, and writes finished LinkedIn posts directly into Notion for you to review and publish.
+This project turns your long-form content into LinkedIn posts and marketing emails — automatically. You feed it articles, guides, blog posts, or newsletters. It reads them, extracts the sharpest ideas, writes finished LinkedIn posts and a click-driving email directly into Notion for you to review and publish.
 
-It was originally built for [Spike.sh](https://spike.sh) to repurpose their guides into LinkedIn content. But the pipeline works for any content type and any brand. This guide will walk you through setting it up for yourself, from scratch, even if you have never written a line of code.
+It was originally built for [Spike.sh](https://spike.sh) to repurpose their guides into LinkedIn content and SendGrid emails. But the pipeline works for any content type and any brand. This guide will walk you through setting it up for yourself, from scratch, even if you have never written a line of code.
 
 ---
 
@@ -45,7 +45,7 @@ You now have your own copy of the project. Everything from here is done in your 
 
 ## Part 2 — Set up Notion
 
-You need two databases in Notion: one for your source content, and one where the generated LinkedIn posts will land.
+You need three databases in Notion: one for your source content, one where the generated LinkedIn posts will land, and one for marketing emails.
 
 ### Step 3: Create the Content database
 
@@ -61,10 +61,12 @@ This is where you add the articles, guides, or posts you want to turn into Linke
 | Title | Title | Already exists by default |
 | URL | URL | Click **+** → choose **URL** |
 | Posts Generated | Checkbox | Click **+** → choose **Checkbox** |
+| Email Generated | Checkbox | Click **+** → choose **Checkbox** |
 
 - **Title**: The name of your article or piece of content
-- **URL**: The public link to the content (used in the P.S. of each LinkedIn post)
-- **Posts Generated**: Leave unchecked. The pipeline checks this automatically when it's done processing a piece of content.
+- **URL**: The public link to the content (used in the P.S. of each LinkedIn post and the CTA link in emails)
+- **Posts Generated**: Leave unchecked. The pipeline checks this automatically when it's done generating LinkedIn posts.
+- **Email Generated**: Leave unchecked. The pipeline checks this automatically when it's done generating an email.
 
 ### Step 4: Create the LinkedIn Posts database
 
@@ -91,6 +93,38 @@ For the **Status** column, add these options (click the column → **Edit proper
 
 For the **Linked Guide** column, set the relation to point to your Content database (the one you created in Step 3).
 
+### Step 4b: Create the Emails database
+
+This is where generated emails appear.
+
+1. Create another new Notion page
+2. Title it "Emails" (or whatever you prefer)
+3. Change it to a **Table** database
+4. Add these columns:
+
+| Column name | Type |
+|---|---|
+| Title | Title (default) |
+| Subject Line | Text |
+| Preview Text | Text |
+| Email Body | Text |
+| CTA Text | Text |
+| Guide URL | URL |
+| Status | Select |
+| Linked Guide | Relation |
+| SendGrid ID | Text |
+| Open Rate | Number (percent) |
+| Click Rate | Number (percent) |
+| Notes | Text |
+
+For the **Status** column, add these options:
+- `Generated` — colour: yellow
+- `Approved` — colour: purple
+- `Sent` — colour: blue
+- `Analyzed` — colour: green
+
+For the **Linked Guide** column, set the relation to point to your Content database.
+
 ### Step 5: Get your Notion database IDs
 
 Every Notion database has a unique ID. You need these IDs so the pipeline knows where to read and write.
@@ -100,7 +134,7 @@ Every Notion database has a unique ID. You need these IDs so the pipeline knows 
    `https://www.notion.so/yourworkspace/abc123def456...?v=xyz`
 3. The long string of characters between the last `/` and the `?` is the database ID
 4. Copy it and save it somewhere — you will need it shortly
-5. Do the same for your LinkedIn Posts database
+5. Do the same for your LinkedIn Posts database and your Emails database
 
 ---
 
@@ -208,6 +242,7 @@ The project was built for Spike.sh's guides. Before you run it, you need to poin
 ```
 | Guides DB           | `31736d80-61ff-8105-9cf2-000b86573e98` |
 | LinkedIn Posts DB   | `31736d80-61ff-813a-8f48-000bc237c7be` |
+| Emails DB           | `72567936-61f0-400c-b7db-8c3bd9da3ae4` |
 ```
 
 3. Replace the IDs with your own database IDs (the ones you copied in Step 5)
@@ -278,10 +313,10 @@ In Claude Code (make sure you are inside the project folder), type:
 Press Enter.
 
 The pipeline will:
-1. Scan for content with `Posts Generated = unchecked`
+1. Scan for content with `Posts Generated = unchecked` or `Email Generated = unchecked`
 2. Read your content
-3. Extract the sharpest ideas — one LinkedIn post per idea
-4. Write posts directly into your LinkedIn Posts database in Notion
+3. Extract the sharpest ideas — one LinkedIn post per idea, and one email per guide
+4. Write posts and emails directly into your Notion databases
 5. Mark the content as processed
 
 When it is done, you will see a summary in Claude Code showing how many posts were written.
@@ -332,9 +367,17 @@ Run `/run` again. For every `Approved` post, the pipeline will:
 
 Take the image prompt into any AI image tool — Midjourney, DALL-E, Adobe Firefly, or similar — and generate the image.
 
-### Step 22: Publish
+### Step 22: Publish LinkedIn posts
 
 Post on LinkedIn with your image. Then go back to Notion and change the status to `Published`.
+
+### Step 23: Review and send emails
+
+Open your Emails database. You will see one email per guide, each with `Status = Generated`.
+
+Review the subject line, preview text, email body, and CTA text. Add inline comments for any changes, then run `/run` to apply edits.
+
+When satisfied, change the status to `Approved`, then send via SendGrid. After sending, update the status to `Sent` and log analytics (open rate, click rate) when available.
 
 ---
 
@@ -387,10 +430,11 @@ Once set up, your workflow is:
 1. Publish a piece of content
 2. Add it to your Content database in Notion (paste the text, add the URL)
 3. Open the project in Claude Code and run `/run`
-4. Review generated posts in Notion — add comments where you want changes
+4. Review generated posts and emails in Notion — add comments where you want changes
 5. Run `/run` again to apply edits
 6. Change satisfied posts to `Approved`
 7. Run `/run` to generate image prompts
 8. Generate images, publish on LinkedIn, mark as Published
+9. Review and approve emails, send via SendGrid, log analytics
 
 That is the full loop. Most of the time, you are just adding content to Notion and running `/run`.
