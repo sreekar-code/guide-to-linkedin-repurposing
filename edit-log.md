@@ -17,3 +17,12 @@ These patterns were extracted from 3 rounds of post generation and user review b
 - **The closing line must open a door, not close one.** Do not end on a neat summary. End on tension — an unresolved question, a gap, a hint that the guide contains something the reader now wants.
 - **Hooks must be CATCHY, not informational.** "One on-call rotation uses the Fibonacci sequence to set shift lengths" is informational — it states a fact. "The Fibonacci sequence has no business being in an on-call schedule" is catchy — it creates a feeling. The hook's job is to stop the scroll by making the reader feel something (surprise, disbelief, curiosity), not by explaining something. Specificity matters, but it belongs in the lines after the hook, not in the hook itself.
 - **Vary the click mechanism across posts.** Do not use "there's a hidden catch/problem, click to find out" as the click driver for every post. When every post hints at a problem, the ideas sound like traps instead of useful options. Mix it up: curiosity about how it works, desire to try it, disagreement ("that can't work"), recognition of a problem they have. Match the mechanism to the idea's natural strength.
+
+## Patterns from first edit round (March 2026)
+
+- **P.S. must align with the post body.** If the post already gives away an insight, the P.S. cannot promise the same insight again. The P.S. should point to something the post didn't cover — the next step, a deeper resource, or a different angle. The post and P.S. together should form a progression, not a repetition.
+- **Use deep links when possible.** When the post discusses a specific section of a guide, link directly to that section (anchor link) rather than to the top of the guide. This respects the reader's time and gets them to the relevant content faster.
+- **Don't over-stack examples.** One or two examples are enough to illustrate a point. Three feels like padding and delays getting to the core argument. Get to the discussion faster.
+- **P.S. must be accurate.** Do not claim the guide covers something it doesn't. If unsure what the guide actually shows, keep the P.S. general rather than specific and wrong. An inaccurate P.S. breaks trust.
+- **Avoid absolute claims.** Words like "always" feel like overclaiming. Prefer "often" or "usually." The audience notices when a post overpromises.
+- **Don't echo the closing line in the P.S.** If the last line of the body already sets up the click, the P.S. should add a new reason or a fresh angle — not repeat the same idea in different words.
